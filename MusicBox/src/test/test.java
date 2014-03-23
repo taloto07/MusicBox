@@ -10,6 +10,7 @@ public class test {
 		DatabaseService service = new DatabaseService();
 		List<Song> songs = service.getAllSongs();
 		
+		System.out.println("Sample test from song table from music database:");
 		for (Song s: songs){
 			System.out.println("Title: " + s.getTitle());
 		}

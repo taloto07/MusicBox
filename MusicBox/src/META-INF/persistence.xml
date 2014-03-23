@@ -6,17 +6,18 @@
 	version="1.0">
 
 	<persistence-unit name="musicboxJPA" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>me.musicbox.hosting.dao.Song</class>
 		
 		<properties>
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"></property>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/music"></property>
-			<property name="javax.persistence.jdbc.user" value="root"></property>
-			<property name="javax.persistence.jdbc.password" value="root"></property>
-			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"></property> -->
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"></property>
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/music"></property>
+			<property name="hibernate.connection.username" value="root"></property>
+			<property name="hibernate.connection.password" value="root"></property>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"></property>
 			<!-- Default is false for backwards compatibility. Should be used on all 
 				new projects -->
-			<!-- <property name="hibernate.id.new_generator_mappings" value="true"></property> -->
+			<property name="hibernate.id.new_generator_mappings" value="true"></property>
 		</properties>
 	</persistence-unit>
 </persistence>
