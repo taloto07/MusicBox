@@ -6,6 +6,7 @@
 	version="1.0">
 
 	<persistence-unit name="musicboxJPA" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>me.musicbox.hosting.dao.Song</class>
 		
 		<properties>
