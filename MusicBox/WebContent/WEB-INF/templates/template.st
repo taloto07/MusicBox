@@ -46,15 +46,7 @@ template(contextPath, title, body) ::= "
    		</div><!--- /.container -->
    	</div> <!-- /.navbar -->
 	
-	<div class='container'>
-		<div class='col-sm-4'>
-			<ul class='list-group'>
-				$body:{n| 
-  					<li class='list-group-item'>$n.id$ $n.title$</li>
- 				}$
-			</ul>
-		</div>
-	</div>	
+	$body$
 
 	<script src='https://code.jquery.com/jquery-1.10.2.min.js'></script>
     <script src='$contextPath$js/bootstrap.min.js'></script>
