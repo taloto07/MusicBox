@@ -1,5 +1,6 @@
 package me.musicbox.hosting.guice;
 
+import me.musicbox.hosting.servlet.DispatchServlet;
 import me.musicbox.hosting.servlet.DispatchTest;
 
 import com.google.inject.Singleton;
@@ -14,14 +15,14 @@ public class MainModule extends ServletModule {
 		filter("/*").through(PersistFilter.class);
 		
 		bind(DispatchTest.class).in(Singleton.class);
+		bind(DispatchServlet.class).in(Singleton.class);
 		
-		serve("/").with(DispatchTest.class);
+		serve("/").with(DispatchServlet.class);
 		serve("/test").with(DispatchTest.class);
-		serve("*.php").with(DispatchTest.class);
-		serve("*.asp").with(DispatchTest.class);
-		serve("home.asp").with(DispatchTest.class);
-		serve("*.html").with(DispatchTest.class);
-		serve("*.htm").with(DispatchTest.class);
-		serve("*.xhtml").with(DispatchTest.class);
+		serve("*.php").with(DispatchServlet.class);
+		serve("*.asp").with(DispatchServlet.class);
+		serve("*.html").with(DispatchServlet.class);
+		serve("*.htm").with(DispatchServlet.class);
+		serve("*.xhtml").with(DispatchServlet.class);
 	}
 }
