@@ -14,12 +14,14 @@ public class MainModule extends ServletModule {
 		filter("/*").through(PersistFilter.class);
 		
 		bind(DispatchTest.class).in(Singleton.class);
-//		bind(DispatchScott.class).in(Singleton.class);
-//		//bind(DispatchAnything.class).in(Singleton.class);
-//		
-//		serve("/scott").with(DispatchScott.class);
-		serve("/test").with(DispatchTest.class);
-		//serve("/*").with(DispatchAnything.class);
 		
+		serve("/").with(DispatchTest.class);
+		serve("/test").with(DispatchTest.class);
+		serve("*.php").with(DispatchTest.class);
+		serve("*.asp").with(DispatchTest.class);
+		serve("home.asp").with(DispatchTest.class);
+		serve("*.html").with(DispatchTest.class);
+		serve("*.htm").with(DispatchTest.class);
+		serve("*.xhtml").with(DispatchTest.class);
 	}
 }
