@@ -19,8 +19,8 @@ public class Song implements Serializable {
 	@Id
 	private int id;
 
-	@Column(name="artist_id")
-	private int artistId;
+	@ManyToOne
+	private Artist artist;
 
 	private String path;
 
@@ -29,20 +29,20 @@ public class Song implements Serializable {
 	public Song() {
 	}
 
+	public Artist getArtist() {
+		return artist;
+	}
+
+	public void setArtist(Artist artist) {
+		this.artist = artist;
+	}
+
 	public int getId() {
 		return this.id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getArtistId() {
-		return this.artistId;
-	}
-
-	public void setArtistId(int artistId) {
-		this.artistId = artistId;
 	}
 
 	public String getPath() {
