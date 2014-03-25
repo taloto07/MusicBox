@@ -44,6 +44,8 @@ public class DispatchTest extends BaseServlet {
 	}
 	
 	private void requestProccess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("UTF-8");
+		
 		// Get PrintWriter to write back to client
 		PrintWriter out = response.getWriter();
 		
