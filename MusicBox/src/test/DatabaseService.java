@@ -17,4 +17,5 @@ public class DatabaseService {
 	public List<Song> getAllSongs(){
 		return em.createNamedQuery("Song.findAll", Song.class).getResultList();
 	}
+
 }

@@ -8,7 +8,8 @@
 	<persistence-unit name="musicboxJPA" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>me.musicbox.hosting.dao.Song</class>
-		
+		<class>test.Employee</class>
+		<class>test.Artist</class>
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"></property>
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/music"></property>
