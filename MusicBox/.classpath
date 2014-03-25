@@ -17,5 +17,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hibernate"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/String Template"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MySQL Driver"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/htmlcompressor"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
