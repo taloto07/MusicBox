@@ -18,7 +18,6 @@ public class MainModule extends ServletModule {
 		bind(DispatchServlet.class).in(Singleton.class);
 		
 		serve("/").with(DispatchServlet.class);
-		serve("/test").with(DispatchTest.class);
-		serve("/*").with(DispatchServlet.class);
+		serve("/test/*").with(DispatchTest.class);
 	}
 }

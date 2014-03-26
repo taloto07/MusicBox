@@ -52,6 +52,10 @@ public class DispatchTest extends BaseServlet {
 		// Get contextPath for any external files such as css, js path
 		String contextPath = getContextPath(); 
 		
+		String url = request.getRequestURI();
+		int beginIndex = url.lastIndexOf('/') + 1;
+		String id = url.substring(beginIndex, url.length());
+		
 		// Get a list of all songs
 		List<Song> songs = service.getAllSongs();
 		
@@ -59,6 +63,9 @@ public class DispatchTest extends BaseServlet {
 		ST page = templates.getInstanceOf("template");
 		ST body = templates.getInstanceOf("body");
 		body.add("object", songs);
+		body.add("contextPath", contextPath);
+		body.add("url", id);
+		
 		page.add("contextPath", contextPath);
 		page.add("title", "test page");
 		page.add("body", body.render());
