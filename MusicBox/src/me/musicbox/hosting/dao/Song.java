@@ -12,7 +12,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="songs")
-@NamedQuery(name="Song.findAll", query="SELECT s FROM Song s")
+@NamedQueries({
+	@NamedQuery(name="Song.findAll", query="SELECT s FROM Song s"),
+	@NamedQuery(name="Song.findById", query="SELECT s FROM Song s where s.id=:id")
+})
 public class Song implements Serializable {
 	private static final long serialVersionUID = 1L;
 

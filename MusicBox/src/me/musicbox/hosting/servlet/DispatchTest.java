@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -52,9 +53,14 @@ public class DispatchTest extends BaseServlet {
 		// Get contextPath for any external files such as css, js path
 		String contextPath = getContextPath(); 
 		
+		service.refresh();
+		
 		String url = request.getRequestURI();
 		int beginIndex = url.lastIndexOf('/') + 1;
 		String id = url.substring(beginIndex, url.length());
+		if (!id.isEmpty()){
+			service.deleteSongById(Integer.parseInt(id));
+		}
 		
 		// Get a list of all songs
 		List<Song> songs = service.getAllSongs();
