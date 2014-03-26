@@ -11,6 +11,7 @@
 		<class>me.musicbox.hosting.dao.Device</class>
 		<class>me.musicbox.hosting.dao.People</class>
 		<class>me.musicbox.hosting.dao.PeopleDevice</class>
+		
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"></property>
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/music"></property>
