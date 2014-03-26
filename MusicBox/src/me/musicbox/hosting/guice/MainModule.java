@@ -18,11 +18,6 @@ public class MainModule extends ServletModule {
 		bind(DispatchServlet.class).in(Singleton.class);
 		
 		serve("/").with(DispatchServlet.class);
-		serve("/test").with(DispatchTest.class);
-		serve("*.php").with(DispatchServlet.class);
-		serve("*.asp").with(DispatchServlet.class);
-		serve("*.html").with(DispatchServlet.class);
-		serve("*.htm").with(DispatchServlet.class);
-		serve("*.xhtml").with(DispatchServlet.class);
+		serve("/test/*").with(DispatchTest.class);
 	}
 }

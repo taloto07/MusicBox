@@ -44,11 +44,17 @@ public class DispatchTest extends BaseServlet {
 	}
 	
 	private void requestProccess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("UTF-8");
+		
 		// Get PrintWriter to write back to client
 		PrintWriter out = response.getWriter();
 		
 		// Get contextPath for any external files such as css, js path
 		String contextPath = getContextPath(); 
+		
+		String url = request.getRequestURI();
+		int beginIndex = url.lastIndexOf('/') + 1;
+		String id = url.substring(beginIndex, url.length());
 		
 		// Get a list of all songs
 		List<Song> songs = service.getAllSongs();
@@ -57,6 +63,9 @@ public class DispatchTest extends BaseServlet {
 		ST page = templates.getInstanceOf("template");
 		ST body = templates.getInstanceOf("body");
 		body.add("object", songs);
+		body.add("contextPath", contextPath);
+		body.add("url", id);
+		
 		page.add("contextPath", contextPath);
 		page.add("title", "test page");
 		page.add("body", body.render());
