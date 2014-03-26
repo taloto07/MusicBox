@@ -38,7 +38,10 @@ public class MusicService {
 	}
 	
 	public void refresh(){
+		List<Song> songs = getAllSongs();
+		Song song = songs.get(0);
 		entityManager.get().getTransaction().begin();
+		song.setPath(song.getPath());
 		entityManager.get().getTransaction().commit();
 	}
 
