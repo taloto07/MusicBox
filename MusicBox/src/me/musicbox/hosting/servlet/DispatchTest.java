@@ -74,21 +74,32 @@ public class DispatchTest extends BaseServlet {
 			}
 		}
 		
-		List<Follow> followers = senghuot.getFollows2();
-		List<Follow> followings = senghuot.getFollows1();
-		
 		STGroup templates = getSTGroup();
 		ST page = templates.getInstanceOf("template");
-		ST body = templates.getInstanceOf("body");
 		
-		body.add("user", senghuot.getUsername());
-		body.add("followers", followers);
-		body.add("following", followings);
-		body.add("url", id);
+		if (senghuot == null){
+			ST body = templates.getInstanceOf("userNotFound");
+			body.add("username", id);
+			
+			page.add("body", body.render());
+		}else{
+		
+			List<Follow> followers = senghuot.getFollows2();
+			List<Follow> followings = senghuot.getFollows1();
+			
+			ST body = templates.getInstanceOf("body");
+			
+			body.add("user", senghuot.getUsername());
+			body.add("followers", followers);
+			body.add("following", followings);
+			body.add("url", id);
+			
+			page.add("body", body.render());
+		}
 		
 		page.add("contextPath", contextPath);
 		page.add("title", "test page");
-		page.add("body", body.render());
+		
 		
 		//Write back to client
 		out.print(page.render());
