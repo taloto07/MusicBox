@@ -21,7 +21,7 @@ template(contextPath, title, body) ::= "
           			<span class='icon-bar'></span>
            			<span class='icon-bar'></span>
       			</button>
-       			<a class='navbar-brand' href='#'>Movie Project</a>
+       			<a class='navbar-brand' href='$contextPath$'>Movie Project</a>
 			</div>
 					
       		<div class='navbar-collapse collapse'>
