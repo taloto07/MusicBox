@@ -80,7 +80,8 @@ public class DispatchTest extends BaseServlet {
 		if (senghuot == null){
 			ST body = templates.getInstanceOf("userNotFound");
 			body.add("username", id);
-			
+			body.add("contextPath", contextPath);
+			body.add("users", users);
 			page.add("body", body.render());
 		}else{
 		
