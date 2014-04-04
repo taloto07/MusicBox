@@ -7,7 +7,7 @@ userNotFound(username, users, contextPath) ::= "
 			$users:{n|
 				<li class='list-group-item'>
 					<a href='$contextPath$test/$n.username$'>
-						$n.username$
+						$n.username$ $n.firstname$ $n.lastname$ $n.email$ $n.dob$ $n.createDate$
 					</a>
 				</li>
 			}$

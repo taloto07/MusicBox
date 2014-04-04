@@ -18,6 +18,7 @@
 			<property name="hibernate.connection.username" value="root"></property>
 			<property name="hibernate.connection.password" value="root"></property>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"></property>
+			<!-- <property name="hibernate.show_sql" value="true"/> -->
 			<!-- Default is false for backwards compatibility. Should be used on all 
 				new projects -->
 			<property name="hibernate.id.new_generator_mappings" value="true"></property>
