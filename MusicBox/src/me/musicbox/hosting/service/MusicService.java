@@ -5,8 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
-import me.musicbox.hosting.dao.User;
-
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
@@ -14,9 +12,9 @@ public class MusicService {
 	@Inject
 	private Provider<EntityManager> entityManager;
 	
-	public List<User> getAllUsers(){
-		return entityManager.get().createNamedQuery("User.findAll", User.class).getResultList();
-	}
+//	public List<User> getAllUsers(){
+//		return entityManager.get().createNamedQuery("User.findAll", User.class).getResultList();
+//	}
 	
 //	public List<Song> getAllSongs(){
 //		return entityManager.get().createNamedQuery("Song.findAll", Song.class).getResultList();

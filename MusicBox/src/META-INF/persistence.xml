@@ -7,9 +7,18 @@
 
 	<persistence-unit name="musicboxJPA" transaction-type="RESOURCE_LOCAL">
 	<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>me.musicbox.hosting.dao.Follow</class>
-		<class>me.musicbox.hosting.dao.Role</class>
-		<class>me.musicbox.hosting.dao.User</class>
+	<class>me.musicbox.hosting.dao.Comment</class>
+	<class>me.musicbox.hosting.dao.Follow</class>
+	<class>me.musicbox.hosting.dao.LikesPlaylist</class>
+	<class>me.musicbox.hosting.dao.LikesSong</class>
+	<class>me.musicbox.hosting.dao.Playlist</class>
+	<class>me.musicbox.hosting.dao.PlaylistsSong</class>
+	<class>me.musicbox.hosting.dao.Role</class>
+	<class>me.musicbox.hosting.dao.Song</class>
+	<class>me.musicbox.hosting.dao.SongsTag</class>
+	<class>me.musicbox.hosting.dao.Tag</class>
+	<class>me.musicbox.hosting.dao.User</class>
+		
 		
 		
 		<properties>

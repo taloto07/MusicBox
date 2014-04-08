@@ -50,6 +50,26 @@ public class User implements Serializable {
 	@ManyToOne
 	private Role role;
 
+	//bi-directional many-to-one association to Comment
+	@OneToMany(mappedBy="user")
+	private List<Comment> comments;
+
+	//bi-directional many-to-one association to LikesPlaylist
+	@OneToMany(mappedBy="user")
+	private List<LikesPlaylist> likesPlaylists;
+
+	//bi-directional many-to-one association to LikesSong
+	@OneToMany(mappedBy="user")
+	private List<LikesSong> likesSongs;
+
+	//bi-directional many-to-one association to Playlist
+	@OneToMany(mappedBy="user")
+	private List<Playlist> playlists;
+
+	//bi-directional many-to-one association to Song
+	@OneToMany(mappedBy="user")
+	private List<Song> songs;
+
 	public User() {
 	}
 
@@ -167,6 +187,116 @@ public class User implements Serializable {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public List<Comment> getComments() {
+		return this.comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public Comment addComment(Comment comment) {
+		getComments().add(comment);
+		comment.setUser(this);
+
+		return comment;
+	}
+
+	public Comment removeComment(Comment comment) {
+		getComments().remove(comment);
+		comment.setUser(null);
+
+		return comment;
+	}
+
+	public List<LikesPlaylist> getLikesPlaylists() {
+		return this.likesPlaylists;
+	}
+
+	public void setLikesPlaylists(List<LikesPlaylist> likesPlaylists) {
+		this.likesPlaylists = likesPlaylists;
+	}
+
+	public LikesPlaylist addLikesPlaylist(LikesPlaylist likesPlaylist) {
+		getLikesPlaylists().add(likesPlaylist);
+		likesPlaylist.setUser(this);
+
+		return likesPlaylist;
+	}
+
+	public LikesPlaylist removeLikesPlaylist(LikesPlaylist likesPlaylist) {
+		getLikesPlaylists().remove(likesPlaylist);
+		likesPlaylist.setUser(null);
+
+		return likesPlaylist;
+	}
+
+	public List<LikesSong> getLikesSongs() {
+		return this.likesSongs;
+	}
+
+	public void setLikesSongs(List<LikesSong> likesSongs) {
+		this.likesSongs = likesSongs;
+	}
+
+	public LikesSong addLikesSong(LikesSong likesSong) {
+		getLikesSongs().add(likesSong);
+		likesSong.setUser(this);
+
+		return likesSong;
+	}
+
+	public LikesSong removeLikesSong(LikesSong likesSong) {
+		getLikesSongs().remove(likesSong);
+		likesSong.setUser(null);
+
+		return likesSong;
+	}
+
+	public List<Playlist> getPlaylists() {
+		return this.playlists;
+	}
+
+	public void setPlaylists(List<Playlist> playlists) {
+		this.playlists = playlists;
+	}
+
+	public Playlist addPlaylist(Playlist playlist) {
+		getPlaylists().add(playlist);
+		playlist.setUser(this);
+
+		return playlist;
+	}
+
+	public Playlist removePlaylist(Playlist playlist) {
+		getPlaylists().remove(playlist);
+		playlist.setUser(null);
+
+		return playlist;
+	}
+
+	public List<Song> getSongs() {
+		return this.songs;
+	}
+
+	public void setSongs(List<Song> songs) {
+		this.songs = songs;
+	}
+
+	public Song addSong(Song song) {
+		getSongs().add(song);
+		song.setUser(this);
+
+		return song;
+	}
+
+	public Song removeSong(Song song) {
+		getSongs().remove(song);
+		song.setUser(null);
+
+		return song;
 	}
 
 }
