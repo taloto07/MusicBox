@@ -1,9 +1,13 @@
 package me.musicbox.hosting.service;
 
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+
+import me.musicbox.hosting.dao.Role;
+import me.musicbox.hosting.dao.User;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -12,10 +16,46 @@ public class MusicService {
 	@Inject
 	private Provider<EntityManager> entityManager;
 	
-//	public List<User> getAllUsers(){
-//		return entityManager.get().createNamedQuery("User.findAll", User.class).getResultList();
-//	}
+	public List<User> getAllUsers(){
+		return entityManager.get().createNamedQuery("User.findAll", User.class).getResultList();
+	}
 	
+	public User getUserByUsername(String username){
+		try{
+			return entityManager.get().createNamedQuery("User.findByUsername", User.class)
+					.setParameter("username", username).getSingleResult();
+		}catch (NoResultException e){
+			return null;
+		}
+	}
+	
+	public boolean addUser(User user){
+		entityManager.get().getTransaction().begin();
+		entityManager.get().persist(user);
+		entityManager.get().getTransaction().commit();
+		return true;
+	}
+	
+	public boolean removeUserByUsername(String username){
+		User deletedUser = getUserByUsername(username);
+		entityManager.get().getTransaction().begin();
+		entityManager.get().remove(deletedUser);
+		entityManager.get().getTransaction().commit();
+		return true;
+	}
+	
+	public List<Role> getAllRoles(){
+		return entityManager.get().createNamedQuery("Role.findAll", Role.class).getResultList();
+	}
+	
+	public Role getRoleByType(String type){
+		try{
+			return entityManager.get().createNamedQuery("Role.findByType", Role.class).setParameter("type", type)
+			.getSingleResult();
+		}catch (NoResultException e){
+			return null;
+		}
+	}
 //	public List<Song> getAllSongs(){
 //		return entityManager.get().createNamedQuery("Song.findAll", Song.class).getResultList();
 //	}
