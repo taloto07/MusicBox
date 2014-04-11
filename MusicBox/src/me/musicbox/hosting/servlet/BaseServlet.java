@@ -11,6 +11,7 @@ import org.stringtemplate.v4.STGroup;
 import org.stringtemplate.v4.STGroupDir;
 
 import com.google.inject.Inject;
+import com.googlecode.htmlcompressor.compressor.HtmlCompressor;
 
 import me.musicbox.hosting.service.MusicService;
 
@@ -57,4 +58,8 @@ public class BaseServlet extends HttpServlet {
 		return contextPath;
 	}
 
+	protected String compressHTML(String content){
+		HtmlCompressor compressor = new HtmlCompressor();
+		return compressor.compress(content);
+	}
 }

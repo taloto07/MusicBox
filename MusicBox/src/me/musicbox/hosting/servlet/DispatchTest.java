@@ -102,7 +102,7 @@ public class DispatchTest extends BaseServlet {
 		
 		
 		//Write back to client
-		out.print(page.render());
+		out.print(compressHTML(page.render()));
 		out.flush();
 	}
 
