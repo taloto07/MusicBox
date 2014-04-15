@@ -19,13 +19,13 @@ import org.stringtemplate.v4.STGroup;
  * Servlet implementation class DispatchTest
  */
 //@WebServlet("/DispatchTest")
-public class DispatchTest extends BaseServlet {
+public class Testing extends BaseServlet {
 	private static final long serialVersionUID = 1L;
     
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DispatchTest() {
+    public Testing() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -54,58 +54,14 @@ public class DispatchTest extends BaseServlet {
 		// Get contextPath for any external files such as css, js path
 		String contextPath = getContextPath(); 
 		
-		//service.refresh();
-		
-		String url = request.getRequestURI();
-		int beginIndex = url.lastIndexOf('/') + 1;
-		String id = url.substring(beginIndex, url.length());
-		
-
-		
-		// Get a list of all songs
-		List<User> users = service.getAllUsers();
-		
-		User senghuot = null;
-		for (User u: users){
-			if (u.getUsername().equalsIgnoreCase(id)){
-				senghuot = u;
-				break;
-			}
-		}
 		
 		STGroup templates = getSTGroup();
-		ST page = templates.getInstanceOf("template");
-		ST body;
+		ST page = templates.getInstanceOf("test");
 		
-		if (senghuot == null){	// User doesn't exist
-			body = templates.getInstanceOf("userNotFound");
-			body.add("username", id);
-			body.add("contextPath", contextPath);
-			body.add("users", users);
-			
-		
-		}else{	// User exist
-		
-			List<Follow> followers = senghuot.getFollows2();
-			List<Follow> followings = senghuot.getFollows1();
-			
-			body = templates.getInstanceOf("body");
-			
-			body.add("user", senghuot.getUsername());
-			body.add("followers", followers);
-			body.add("following", followings);
-			body.add("url", id);
-			body.add("contextPath", contextPath);
-			
-			
-		}
-		page.add("body", body.render());
 		page.add("contextPath", contextPath);
-		page.add("title", "test page");
-		
 		
 		//Write back to client
-		out.print(page.render());
+		out.print(contextPath);
 		out.flush();
 	}
 

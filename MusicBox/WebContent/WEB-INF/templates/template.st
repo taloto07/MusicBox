@@ -45,7 +45,7 @@ template(contextPath, title, body) ::= "
        		</div><!--/.navbar-collapse -->
    		</div><!--- /.container -->
    	</div> <!-- /.navbar -->
-	
+	contextPath: $contextPath$
 	$body$
 
 	<script src='https://code.jquery.com/jquery-1.10.2.min.js'></script>
