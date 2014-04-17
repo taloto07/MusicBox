@@ -2,6 +2,8 @@ package me.musicbox.hosting.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
+import java.nio.charset.Charset;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -46,8 +48,9 @@ public class DispatchTest extends BaseServlet {
 	
 	private void requestProccess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Set unicode to utf-8
+		//response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
-		
+		//request.setCharacterEncoding("UTF-8");
 		// Get PrintWriter to write back to client
 		PrintWriter out = response.getWriter();
 		
@@ -59,9 +62,8 @@ public class DispatchTest extends BaseServlet {
 		String url = request.getRequestURI();
 		int beginIndex = url.lastIndexOf('/') + 1;
 		String id = url.substring(beginIndex, url.length());
-		
+		id = URLDecoder.decode(id, "UTF-8");
 
-		
 		// Get a list of all songs
 		List<User> users = service.getAllUsers();
 		

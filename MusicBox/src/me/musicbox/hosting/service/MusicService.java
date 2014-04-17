@@ -56,6 +56,7 @@ public class MusicService {
 			return null;
 		}
 	}
+	
 //	public List<Song> getAllSongs(){
 //		return entityManager.get().createNamedQuery("Song.findAll", Song.class).getResultList();
 //	}

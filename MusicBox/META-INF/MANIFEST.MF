@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MusicBox
+Bundle-SymbolicName: MusicBox
+Bundle-Version: 1.0.0.qualifier
+Export-Package: me.musicbox.hosting.dao,
+ me.musicbox.hosting.guice,
+ me.musicbox.hosting.service,
+ me.musicbox.hosting.servlet,
+ test
