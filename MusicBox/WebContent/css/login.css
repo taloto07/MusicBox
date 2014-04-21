@@ -1,0 +1,107 @@
+body {
+	background-image: url('../../files/universe.jpeg');
+	/*background-image: url('../../files/lifestyle.jpg');*/
+	background-attachment: fixed;
+	min-width: 970px;
+}
+
+.container {
+	width: 970px !important;
+	max-width: none !important;
+}
+
+.navbar {
+	opacity: .85;
+}
+
+.slogan {
+	margin-top: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	background-image: url('../../files/mesh.png');
+	opacity: .8;
+	border-radius: 10px;
+	border: none;
+	text-align: center;
+}
+
+.slogan > .text {
+	color: white;
+	font-weight: bold;
+	z-index: 1;
+	opacity: .9;
+}
+
+
+.slogan h3 {
+	font-size: 14px;
+}
+
+#search {
+	margin-right: 10px;
+	width: 600px;
+}
+
+#login {
+	padding-right: 0px;
+}
+
+.simplicity {
+	margin-top: 300px;
+	margin-bottom: 300px;
+	background-color: white;
+	padding-bottom: 75px;
+	padding-top: 75px;
+}
+
+.simplicity h1{
+	margin-top: 10px;
+	font-size: 75px;
+}
+
+.simplicity p{
+	font-size: 20px;
+}
+
+.text h2 {
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
+.connection {
+	background-color: #34495e;
+	color: white;
+	border: none;
+	margin-top: 200px;
+	padding-top: 75px;
+	padding-bottom: 75px;
+}
+
+.connection h1 {
+	color: white;
+}
+
+.connection .col-sm-4 {
+	margin-top: 20px;
+}
+
+.connection h1 {
+	font-size: 60px;
+}
+
+.connection p {
+	font-size: 16px;
+}
+
+.footer {
+	margin-top: 50px;
+	width: 100%;
+	background-color: #2f2f2f;
+	color: white;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	text-align: center;
+}
