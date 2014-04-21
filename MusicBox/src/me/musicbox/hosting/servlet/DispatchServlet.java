@@ -11,31 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
 
-/**
- * Servlet implementation class DispatchTest
- */
 //@WebServlet("/DispatchTest")
 public class DispatchServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
     
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public DispatchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		requestProccess(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		requestProccess(request, response);
 	}
@@ -49,12 +37,12 @@ public class DispatchServlet extends BaseServlet {
 		String realPath = getServletContext().getRealPath("");
 		System.out.println("Appliaction real path: " + realPath);
 		STGroup templates = getSTGroup();
-		ST page = templates.getInstanceOf("template");
-		ST body = templates.getInstanceOf("form");
+		ST page = templates.getInstanceOf("login");
+//		ST body = templates.getInstanceOf("form");
 		//body.add("prefix", contextPath);
 		page.add("contextPath", contextPath);
-		page.add("title", "Home");
-		page.add("body", body.render());
+//		page.add("title", "Home");
+//		page.add("body", body.render());
 		
 		//Write back to client
 		out.print(page.render());

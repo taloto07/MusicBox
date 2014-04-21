@@ -1,10 +1,11 @@
+login(contextPath)::="
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset='US-ASCII'>
 	<title>Log In</title>
-	<link href='css/bootstrap.min.css' rel='stylesheet' />
-	<link rel='stylesheet' href='css/login.css' />
+	<link href='$contextPath$css/bootstrap.min.css' rel='stylesheet' />
+	<link rel='stylesheet' href='$contextPath$css/login.css' />
 </head>
 <body>
 
@@ -88,3 +89,4 @@
 
 </body>
 </html>
+";

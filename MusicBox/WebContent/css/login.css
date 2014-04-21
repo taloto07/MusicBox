@@ -1,6 +1,6 @@
 body {
-	background-image: url('../../files/universe.jpeg');
-	/*background-image: url('../../files/lifestyle.jpg');*/
+	background-image: url('../files/universe.jpeg');
+	/* background-image: url('../files/lifestyle.jpg'); */
 	background-attachment: fixed;
 	min-width: 970px;
 }
