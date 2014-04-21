@@ -2,15 +2,17 @@ package me.musicbox.hosting.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
+import java.nio.charset.Charset;
 import java.util.List;
 
-import javax.persistence.NoResultException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import me.musicbox.hosting.dao.Song;
+import me.musicbox.hosting.dao.Follow;
+import me.musicbox.hosting.dao.User;
 
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
@@ -45,36 +47,64 @@ public class DispatchTest extends BaseServlet {
 	}
 	
 	private void requestProccess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Set unicode to utf-8
+		//response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
-		
+		//request.setCharacterEncoding("UTF-8");
 		// Get PrintWriter to write back to client
 		PrintWriter out = response.getWriter();
 		
 		// Get contextPath for any external files such as css, js path
 		String contextPath = getContextPath(); 
 		
-		service.refresh();
+		//service.refresh();
 		
 		String url = request.getRequestURI();
 		int beginIndex = url.lastIndexOf('/') + 1;
 		String id = url.substring(beginIndex, url.length());
-		if (!id.isEmpty()){
-			service.deleteSongById(Integer.parseInt(id));
-		}
-		
+		id = URLDecoder.decode(id, "UTF-8");
+
 		// Get a list of all songs
-		List<Song> songs = service.getAllSongs();
+		List<User> users = service.getAllUsers();
+		
+		User senghuot = null;
+		for (User u: users){
+			if (u.getUsername().equalsIgnoreCase(id)){
+				senghuot = u;
+				break;
+			}
+		}
 		
 		STGroup templates = getSTGroup();
 		ST page = templates.getInstanceOf("template");
-		ST body = templates.getInstanceOf("body");
-		body.add("object", songs);
-		body.add("contextPath", contextPath);
-		body.add("url", id);
+		ST body;
 		
+		if (senghuot == null){	// User doesn't exist
+			body = templates.getInstanceOf("userNotFound");
+			body.add("username", id);
+			body.add("contextPath", contextPath);
+			body.add("users", users);
+			
+		
+		}else{	// User exist
+		
+			List<Follow> followers = senghuot.getFollows2();
+			List<Follow> followings = senghuot.getFollows1();
+			
+			body = templates.getInstanceOf("body");
+			
+			body.add("user", senghuot.getUsername());
+			body.add("followers", followers);
+			body.add("following", followings);
+			body.add("url", id);
+			body.add("contextPath", contextPath);
+			
+			
+		}
+		page.add("body", body.render());
 		page.add("contextPath", contextPath);
 		page.add("title", "test page");
-		page.add("body", body.render());
+		
 		
 		//Write back to client
 		out.print(page.render());

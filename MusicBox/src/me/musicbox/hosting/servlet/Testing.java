@@ -2,11 +2,15 @@ package me.musicbox.hosting.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import me.musicbox.hosting.dao.Follow;
+import me.musicbox.hosting.dao.User;
 
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
@@ -15,13 +19,13 @@ import org.stringtemplate.v4.STGroup;
  * Servlet implementation class DispatchTest
  */
 //@WebServlet("/DispatchTest")
-public class DispatchServlet extends BaseServlet {
+public class Testing extends BaseServlet {
 	private static final long serialVersionUID = 1L;
     
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DispatchServlet() {
+    public Testing() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,23 +45,23 @@ public class DispatchServlet extends BaseServlet {
 	}
 	
 	private void requestProccess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Set unicode to utf-8
+		response.setCharacterEncoding("UTF-8");
+		
 		// Get PrintWriter to write back to client
 		PrintWriter out = response.getWriter();
 		
 		// Get contextPath for any external files such as css, js path
 		String contextPath = getContextPath(); 
-		String realPath = getServletContext().getRealPath("");
-		System.out.println("Appliaction real path: " + realPath);
+		
+		
 		STGroup templates = getSTGroup();
-		ST page = templates.getInstanceOf("template");
-		ST body = templates.getInstanceOf("form");
-		//body.add("prefix", contextPath);
+		ST page = templates.getInstanceOf("test");
+		
 		page.add("contextPath", contextPath);
-		page.add("title", "Home");
-		page.add("body", body.render());
 		
 		//Write back to client
-		out.print(page.render());
+		out.print(contextPath);
 		out.flush();
 	}
 

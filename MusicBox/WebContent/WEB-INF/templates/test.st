@@ -1,0 +1,3 @@
+test(contextPath) ::="
+	contextPath = $contextPath$
+";

@@ -21,7 +21,7 @@ template(contextPath, title, body) ::= "
           			<span class='icon-bar'></span>
            			<span class='icon-bar'></span>
       			</button>
-       			<a class='navbar-brand' href='#'>Home</a>
+				<a class='navbar-brand' href='$contextPath$'>Movie Project</a>
 			</div>
 					
       		<div class='navbar-collapse collapse'>
@@ -45,7 +45,7 @@ template(contextPath, title, body) ::= "
        		</div><!--/.navbar-collapse -->
    		</div><!--- /.container -->
    	</div> <!-- /.navbar -->
-	
+	contextPath: $contextPath$
 	$body$
 
 	<script src='https://code.jquery.com/jquery-1.10.2.min.js'></script>

@@ -6,12 +6,22 @@
 	version="1.0">
 
 	<persistence-unit name="musicboxJPA" transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+	<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>me.musicbox.hosting.dao.Comment</class>
+		<class>me.musicbox.hosting.dao.Follow</class>
+		<class>me.musicbox.hosting.dao.LikesPlaylist</class>
+		<class>me.musicbox.hosting.dao.LikesSong</class>
+		<class>me.musicbox.hosting.dao.Playlist</class>
+		<class>me.musicbox.hosting.dao.PlaylistsSong</class>
+		<class>me.musicbox.hosting.dao.Role</class>
 		<class>me.musicbox.hosting.dao.Song</class>
+		<class>me.musicbox.hosting.dao.SongsTag</class>
+		<class>me.musicbox.hosting.dao.Tag</class>
+		<class>me.musicbox.hosting.dao.User</class>
 		
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"></property>
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/music"></property>
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/musicbox"></property>
 			<property name="hibernate.connection.username" value="root"></property>
 			<property name="hibernate.connection.password" value="root"></property>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"></property>
