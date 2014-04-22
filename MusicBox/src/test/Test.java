@@ -15,6 +15,13 @@ import me.musicbox.hosting.dao.User;
 public class Test {
 
 	public static void main(String[] args) {
+		String page = "music/login.html";
+		int bi = page.lastIndexOf('/') + 1;
+		int ei = page.lastIndexOf('.');
+		ei = ei < 0 ? page.length(): ei;
+		System.out.println("bi: " + bi + "\n" + "ei: " + ei);
+		String realPage = page.substring(bi, ei);
+		System.out.println("realPage: " + realPage);
 		
 //		EntityManager em = Persistence.createEntityManagerFactory("musicboxJPA").createEntityManager();
 //		

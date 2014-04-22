@@ -1,4 +1,5 @@
-home(prefix) ::= "
+home(contextPath) ::= "
+<div class='simplicity'>
 	<div class='container'>
 		<div class='col-sm-12'>
 			This is home page <br/>
@@ -9,7 +10,9 @@ home(prefix) ::= "
 			This is home page <br/>
 			cham change this.
 
-			Go to <a href='$prefix$test/'>test</a> page.
+			Go to <a href='$contextPath$test/'>test</a> page.<br/>
+			Go to <a href='$contextPath$login.html'>login page</a>
 		</div>
 	</div>
+</div>
 ";

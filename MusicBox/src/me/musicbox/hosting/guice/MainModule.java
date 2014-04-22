@@ -24,6 +24,10 @@ public class MainModule extends ServletModule {
 		bind(UploadServlet.class).in(Singleton.class);
 		
 		serve("/").with(DispatchServlet.class);
+		serve("*.html").with(DispatchServlet.class);
+		serve("*.htm").with(DispatchServlet.class);
+		serve("*.asp").with(DispatchServlet.class);
+		serve("*.php").with(DispatchServlet.class);
 		serve("/test/*").with(DispatchTest.class);
 		serve("/testing/*").with(Testing.class);
 		serve("/UploadFile").with(UploadServlet.class);

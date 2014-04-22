@@ -2,6 +2,8 @@ package me.musicbox.hosting.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,13 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
 
-//@WebServlet("/DispatchTest")
 public class DispatchServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
     
     public DispatchServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,21 +32,46 @@ public class DispatchServlet extends BaseServlet {
 		// Get PrintWriter to write back to client
 		PrintWriter out = response.getWriter();
 		
+		Map<String, String> pages = new HashMap<String, String>();
+		pages.put("login", "Log In");
+		pages.put("home", "HOM");
+		pages.put("page404", "Page 404");
+		pages.put("form", "Test Form");
+		
+		String URI = request.getRequestURI();
+		String myPage = getPageName(URI, pages);
+		
 		// Get contextPath for any external files such as css, js path
 		String contextPath = getContextPath(); 
-		String realPath = getServletContext().getRealPath("");
-		System.out.println("Appliaction real path: " + realPath);
+		
 		STGroup templates = getSTGroup();
-		ST page = templates.getInstanceOf("login");
-//		ST body = templates.getInstanceOf("form");
-		//body.add("prefix", contextPath);
+		ST page = templates.getInstanceOf("temp");
+		ST body = templates.getInstanceOf(myPage);
+		
+		body.add("contextPath", contextPath);
 		page.add("contextPath", contextPath);
-//		page.add("title", "Home");
-//		page.add("body", body.render());
+		page.add("title", pages.get(myPage));
+		page.add("body", body.render());
 		
 		//Write back to client
 		out.print(page.render());
 		out.flush();
 	}
 
+	private String getPageName(String url, Map<String, String> map){
+		int beginIndex = url.lastIndexOf('/') + 1;
+		int endIndex = url.lastIndexOf('.');
+		endIndex = endIndex < 0 ? url.length() : endIndex;
+		String page = url.substring(beginIndex,endIndex);
+		
+		if (page.equalsIgnoreCase("")){
+			return "home";
+		}
+		
+		if (map.containsKey(page)){
+			return page;
+		}
+
+		return "page404";
+	}
 }

@@ -48,9 +48,8 @@ public class DispatchTest extends BaseServlet {
 	
 	private void requestProccess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Set unicode to utf-8
-		//response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
-		//request.setCharacterEncoding("UTF-8");
+		
 		// Get PrintWriter to write back to client
 		PrintWriter out = response.getWriter();
 		
@@ -76,7 +75,7 @@ public class DispatchTest extends BaseServlet {
 		}
 		
 		STGroup templates = getSTGroup();
-		ST page = templates.getInstanceOf("template");
+		ST page = templates.getInstanceOf("temp");
 		ST body;
 		
 		if (senghuot == null){	// User doesn't exist

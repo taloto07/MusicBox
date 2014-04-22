@@ -21,7 +21,7 @@ body {
 	width: 960px;
 	padding-bottom: 5px;
 	padding-top: 5px;
-	background-image: url('../../files/mesh.png');
+	background-image: url('../files/mesh.png');
 	opacity: .8;
 	border-radius: 10px;
 	border: none;

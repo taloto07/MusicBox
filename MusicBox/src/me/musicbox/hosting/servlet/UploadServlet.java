@@ -3,6 +3,8 @@ package me.musicbox.hosting.servlet;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -11,34 +13,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
 
-/**
- * Servlet implementation class DispatchTest
- */
-@MultipartConfig
 public class UploadServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
     
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public UploadServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		requestProccess(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		requestProccess(request, response);
 	}
@@ -65,13 +58,41 @@ public class UploadServlet extends BaseServlet {
 			fileSaveDir.mkdir();
 		}
 		
-		String fileName = null;
-		//Get all the parts from request and write it to the file on server
-		for (Part part: request.getParts()){
-			String contentDisp = part.getHeader("content-disposition");
-			String[] tokens = contentDisp.split(";");
-			out.println("contentDisp = " + contentDisp);
+		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+		if (isMultipart){
+			DiskFileItemFactory factory = new DiskFileItemFactory();
+			factory.setRepository(fileSaveDir);
+			ServletFileUpload upload = new ServletFileUpload(factory);
+			try {
+				List<FileItem> fileItems = upload.parseRequest(request);
+				Iterator<FileItem> iterator = fileItems.iterator();
+				while (iterator.hasNext()){
+					FileItem item = iterator.next();
+					if (item.isFormField()){
+						String fieldName = item.getFieldName();
+						String name = item.getName();
+						String contentType = item.getContentType();
+						String str = item.getString();
+						
+						out.println("<fieldName>: " + fieldName  + " <name>: " + name + " <contentType>: " + contentType + " <str>: " + str);
+					}else{
+						String fieldName = item.getFieldName();
+						String name = item.getName();
+						String contentType = item.getContentType();
+						out.println("<fieldName>: " + fieldName  + " <name>: " + name + " <contentType>: " + contentType);
+						
+					}
+				}
+			} catch (FileUploadException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else{
+			out.println("Not multipart content");
 		}
+		
+		String fileName = null;
+		//Get all the parts from request and write it to the file on serve
 		
 //		STGroup templates = getSTGroup();
 //		ST page = templates.getInstanceOf("template");
