@@ -1,13 +1,14 @@
 package me.musicbox.hosting.servlet;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -68,18 +69,32 @@ public class UploadServlet extends BaseServlet {
 				Iterator<FileItem> iterator = fileItems.iterator();
 				while (iterator.hasNext()){
 					FileItem item = iterator.next();
-					if (item.isFormField()){
+					if (item.isFormField()){	// input field
 						String fieldName = item.getFieldName();
 						String name = item.getName();
 						String contentType = item.getContentType();
 						String str = item.getString();
 						
 						out.println("<fieldName>: " + fieldName  + " <name>: " + name + " <contentType>: " + contentType + " <str>: " + str);
-					}else{
+					}else{	// file field
 						String fieldName = item.getFieldName();
-						String name = item.getName();
-						String contentType = item.getContentType();
+						String name = item.getName();	// file name
+						String contentType = item.getContentType();	// type of file, but not accurate 
 						out.println("<fieldName>: " + fieldName  + " <name>: " + name + " <contentType>: " + contentType);
+						try {	// check if it is legit image
+							File image = new File(uploadFilePath + File.separator + name);
+							item.write(image);
+							BufferedImage img = ImageIO.read(image);
+							if (img == null){	// if it's not legit image delete from server
+								out.println(name + " is not image.");
+								image.delete();
+							}else{
+								out.println(name + " is legit image.");
+							}
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						
 					}
 				}
@@ -90,9 +105,6 @@ public class UploadServlet extends BaseServlet {
 		}else{
 			out.println("Not multipart content");
 		}
-		
-		String fileName = null;
-		//Get all the parts from request and write it to the file on serve
 		
 //		STGroup templates = getSTGroup();
 //		ST page = templates.getInstanceOf("template");

@@ -20,7 +20,7 @@ temp(contextPath, body, title)::="
      			<form class='navbar-form navbar-left' role='search'>
 			          <input type='text' class='form-control' id='search' placeholder='Search'>
 	        	</form>
-		        <a class='navbar-brand navbar-right' href='#' id='login'>
+		        <a class='navbar-brand navbar-right' href='$contextPath$login.html' id='login'>
 		        	<span class='glyphicon glyphicon glyphicon-user'></span> Log In
 		        </a>
 			</div>

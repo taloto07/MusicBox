@@ -1,7 +1,7 @@
 form(contextPath) ::= "
 	<div class='simplicity'>
 		<div class='container'>
-			<div class='col-xs-4'>
+			<div class='col-xs-6'>
 				<form name='upload_file_form' method='post' action='UploadFile' enctype='multipart/form-data' role='form'>
 					<div class='form-group'>
 						<label>
