@@ -4,6 +4,7 @@ package me.musicbox.hosting.guice;
 
 import me.musicbox.hosting.servlet.DispatchServlet;
 import me.musicbox.hosting.servlet.DispatchTest;
+import me.musicbox.hosting.servlet.SSE;
 import me.musicbox.hosting.servlet.Testing;
 import me.musicbox.hosting.servlet.UploadServlet;
 
@@ -22,6 +23,7 @@ public class MainModule extends ServletModule {
 		bind(DispatchServlet.class).in(Singleton.class);
 		bind(Testing.class).in(Singleton.class);
 		bind(UploadServlet.class).in(Singleton.class);
+		bind(SSE.class).in(Singleton.class);
 		
 		serve("/").with(DispatchServlet.class);
 		serve("*.html").with(DispatchServlet.class);
@@ -31,5 +33,6 @@ public class MainModule extends ServletModule {
 		serve("/test/*").with(DispatchTest.class);
 		serve("/testing/*").with(Testing.class);
 		serve("/UploadFile").with(UploadServlet.class);
+		serve("/sse").with(SSE.class);
 	}
 }
