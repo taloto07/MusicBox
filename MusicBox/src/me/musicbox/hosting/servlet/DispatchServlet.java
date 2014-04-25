@@ -37,6 +37,9 @@ public class DispatchServlet extends BaseServlet {
 		pages.put("home", "HOM");
 		pages.put("page404", "Page 404");
 		pages.put("form", "Test Form");
+		pages.put("test", "This Is Test Page.");
+		pages.put("socketclient", "Socket Demo");
+		pages.put("sse", "SSE Demo");
 		
 		String URI = request.getRequestURI();
 		String myPage = getPageName(URI, pages);

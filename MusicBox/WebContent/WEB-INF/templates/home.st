@@ -11,6 +11,8 @@ home(contextPath) ::= "
                 <a href='$contextPath$test/' class='btn btn-danger' role='button'>test</a>
                 <a href='$contextPath$login.html' class='btn btn-success'role='button'>login page</a>
                 <a href='$contextPath$form.html' class='btn btn-info' role='button'>Upload File</a>
+                <a href='$contextPath$socketclient.html' class='btn btn-default' role='button'>Websocket Demo</a>
+                <a href='$contextPath$sse.html' class='btn btn-warning' role='button'>Server Send Events Demo</a>
             </div>
         </div>
     </div>
