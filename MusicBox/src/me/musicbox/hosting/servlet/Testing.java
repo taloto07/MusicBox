@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.jws.WebService;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,50 +20,47 @@ import org.stringtemplate.v4.STGroup;
  * Servlet implementation class DispatchTest
  */
 //@WebServlet("/DispatchTest")
+//@WebService
 public class Testing extends BaseServlet {
 	private static final long serialVersionUID = 1L;
     
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	public String getUserByName(String username){
+		User user = service.getUserByUsername(username);
+		return user.getFirstName();
+	}
+    
     public Testing() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		requestProccess(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		requestProccess(request, response);
 	}
 	
 	private void requestProccess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Set unicode to utf-8
-		response.setCharacterEncoding("UTF-8");
-		
-		// Get PrintWriter to write back to client
-		PrintWriter out = response.getWriter();
-		
-		// Get contextPath for any external files such as css, js path
-		String contextPath = getContextPath(); 
-		
-		
-		STGroup templates = getSTGroup();
-		ST page = templates.getInstanceOf("test");
-		
-		page.add("contextPath", contextPath);
-		
-		//Write back to client
-		out.print(contextPath);
-		out.flush();
+//		response.setCharacterEncoding("UTF-8");
+//		
+//		// Get PrintWriter to write back to client
+//		PrintWriter out = response.getWriter();
+//		
+//		// Get contextPath for any external files such as css, js path
+//		String contextPath = getContextPath(); 
+//		
+//		
+//		STGroup templates = getSTGroup();
+//		ST page = templates.getInstanceOf("test");
+//		
+//		page.add("contextPath", contextPath);
+//		
+//		//Write back to client
+//		out.print(contextPath);
+//		out.flush();
 	}
 
 }

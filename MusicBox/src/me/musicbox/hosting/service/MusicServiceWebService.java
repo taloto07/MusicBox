@@ -11,15 +11,20 @@ import me.musicbox.hosting.dao.User;
 import me.musicbox.hosting.guice.MainModule;
 
 import com.google.inject.Guice;
+import com.google.inject.Inject;
 import com.google.inject.Injector;
 
 @WebService
 public class MusicServiceWebService {
-	Injector injector = Guice.createInjector(new MainModule());
+	@Inject
+	MusicService service;
+
+	public String getThisString(){
+		User user = service.getUserByUsername("7seng7");
+		return user.getFirstName();
+	}
 	
-	public List<User> getAllUsers(){
-		injector.getInstance(MusicPersistenceInitializer.class);
-		MusicService service = injector.getInstance(MusicService.class);
-		return service.getAllUsers();
+	public String normalString(){
+		return "normal string";
 	}
 }

@@ -32,14 +32,16 @@ public class DispatchServlet extends BaseServlet {
 		// Get PrintWriter to write back to client
 		PrintWriter out = response.getWriter();
 		
+		// Map actual page's name to page's title
 		Map<String, String> pages = new HashMap<String, String>();
 		pages.put("login", "Log In");
-		pages.put("home", "HOM");
+		pages.put("home", "HOME");
 		pages.put("page404", "Page 404");
 		pages.put("form", "Test Form");
 		pages.put("test", "This Is Test Page.");
 		pages.put("socketclient", "Socket Demo");
 		pages.put("sse", "SSE Demo");
+		pages.put("ajax", "AJAX Demo");
 		
 		String URI = request.getRequestURI();
 		String myPage = getPageName(URI, pages);

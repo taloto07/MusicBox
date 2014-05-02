@@ -13,9 +13,17 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import me.musicbox.hosting.dao.User;
+import me.musicbox.hosting.guice.MainModule;
+import me.musicbox.hosting.service.MusicPersistenceInitializer;
+import me.musicbox.hosting.service.MusicService;
+
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
+
 @ServerEndpoint("/serverendpointdemo")
 public class ServerEndpointDemo {
-	
 	static Set<Session> chatroomUsers = Collections.synchronizedSet(new HashSet<Session>());
 	
 	@OnOpen
