@@ -1,20 +1,17 @@
 ajax(contextPath)::="
 <div class='simplicity'>
  	<div class='container'>
-    	<h1>AJAX</h1>
-    	<form id='ajaxForm'>
+    	<h1>AJAX Demo</h1>
+    	<form id='ajaxForm' role='form' class='form-inline'>
 	    	<div class='form-group'>
-		    	<label>
-		        	User name:
-		        	<input type='text' id='txtUsername' name='txtUsername' class='form-control' />
-		        	<input type='button' value='Search' id='btnSearch' class='btn btn-default' /> 
-		        </label>
-	        
+		    	<label>User name:</label>
+		        <input type='text' id='txtUsername' name='txtUsername' class='form-control' />
+		        <input type='button' id='btnSearch' name='btnSearch' value='Search' class='btn btn-default' />
 	        </div>
         </form>
         
         <div id='displayInfo'>
-        	User info
+        	Information replace here.
         </div>    
     </div>
 </div>
@@ -37,7 +34,7 @@ ajax(contextPath)::="
 					}
 				}
 			});
-		});	
+		});
 	});		     	   
 </script>
  ";

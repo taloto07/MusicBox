@@ -62,9 +62,16 @@ public class DispatchAjax extends BaseServlet {
 		String contextPath = getContextPath(); 
 		
 		String username = request.getParameter("txtUsername");
-		boolean isValid = false;
-		Map<String, Object> map = new HashMap<String, Object>();
+		String searchBtn = request.getParameter("btnSearch");
 		System.out.println("txtUsername: " + username);
+		System.out.println("btnSearch: " + searchBtn);
+		
+		boolean isValid = false;
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		
+		
 		if (username != null && !username.equalsIgnoreCase("")){
 			User user = service.getUserByUsername(username);
 			if (user != null){
@@ -72,7 +79,6 @@ public class DispatchAjax extends BaseServlet {
 				map.put("firstName", user.getFirstName());
 				map.put("lastName", user.getLastName());
 				map.put("email", user.getEmail());
-				
 			}else{
 				
 			}

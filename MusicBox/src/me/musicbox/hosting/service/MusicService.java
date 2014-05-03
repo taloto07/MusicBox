@@ -29,6 +29,14 @@ public class MusicService {
 		}
 	}
 	
+	public List<User> getUserByLike(String username){
+		try{
+			return entityManager.get().createNamedQuery("User.findByLike", User.class).getResultList();
+		}catch(NoResultException e){
+			return null;
+		}
+	}
+	
 	public boolean addUser(User user){
 		entityManager.get().getTransaction().begin();
 		entityManager.get().persist(user);
