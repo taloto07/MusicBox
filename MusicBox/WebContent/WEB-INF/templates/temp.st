@@ -5,7 +5,7 @@ temp(contextPath, body, title)::="
 	<meta charset='UTF-8'>
 	<title>$title$</title>
 	<link href='$contextPath$css/bootstrap.min.css' rel='stylesheet' />
-	<script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
 	<link rel='stylesheet' href='$contextPath$css/login.css' />
 </head>
 <body>
