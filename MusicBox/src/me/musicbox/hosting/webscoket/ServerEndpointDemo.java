@@ -11,6 +11,7 @@ import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
+import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
 import me.musicbox.hosting.dao.User;
@@ -22,14 +23,14 @@ import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 
-@ServerEndpoint("/serverendpointdemo")
+@ServerEndpoint("/serverendpointdemo/{page}")
 public class ServerEndpointDemo {
 	static Set<Session> chatroomUsers = Collections.synchronizedSet(new HashSet<Session>());
 	
 	@OnOpen
-	public void handdleOpen(Session session){
+	public void handdleOpen(Session session, @PathParam("page") String clientPage){
 		chatroomUsers.add(session);
-		System.out.println("Client is now connected...");
+		System.out.println("Client is now connected in page: " + clientPage);
 	}
 	
 	@OnMessage

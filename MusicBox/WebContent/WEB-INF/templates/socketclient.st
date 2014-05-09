@@ -13,7 +13,7 @@ socketclient(contextPath)::="
 		</div>
 	</div>
 	<script type='text/javascript'>
-		var webSocket = new WebSocket('ws://localhost:8080/MusicBox/serverendpointdemo');
+		var webSocket = new WebSocket('ws://localhost:8080/MusicBox/serverendpointdemo/britney');
 		var messageTextarea = document.getElementById('messageTextarea'); 
 		
 		webSocket.onopen = function(message){processOpen(message)};

@@ -1,19 +1,30 @@
 package test;
 
-import javax.jws.WebService;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import java.util.List;
 
-//@WebService
+import javax.jws.WebService;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
+import me.musicbox.hosting.dao.User;
+import me.musicbox.hosting.guice.MainModule;
+import me.musicbox.hosting.service.MusicPersistenceInitializer;
+import me.musicbox.hosting.service.MusicService;
+
+@WebService
 public class DatabaseService {
-	private EntityManager em;
+	Injector injector = Guice.createInjector(new MainModule());
+	MusicService service;
 	
 	public DatabaseService(){
-		em = Persistence.createEntityManagerFactory("musicbox").createEntityManager();
+		injector.getInstance(MusicPersistenceInitializer.class);
+		service = injector.getInstance(MusicService.class);
 	}
 	
-	public String getThisString(){
-		return "Here is your string.";
+	public String getUserByUsername(String username){
+		User user = service.getUserByUsername(username);
+		return "Here is your string " + user.getFirstName() + " " + user.getLastName() + " " + user.getEmail();
 	}
 	
 }
