@@ -18,14 +18,32 @@ home(contextPath) ::= "
 	            </div>
             </div>
 		</div>
+		
 		<br/>
+		
 		<div class='row'>
-			<div class='col-sm-6'>
+			<div class='col-sm-12'>
+				This is mp3:
+            	<audio controls>
+  					<source src='$contextPath$mp3/ounpig.mp3' type='audio/mpeg'>
+					Your browser does not support the audio element.
+				</audio>
+            </div>
+        </div>
+        
+        <br />
+		
+		<div class='row'>
+			<div class='col-sm-4'>
             	<img src='$contextPath$images/photo.jpg' class='img-circle' />
             </div>
             
-            <div class='col-sm-6'>
-            	<img src='$contextPath$images/photo.jpg' class='img-circle' />
+            <div class='col-sm-4'>
+            	<img src='$contextPath$images/photo.jpg' class='img-rounded' />
+            </div>
+            
+            <div class='col-sm-4'>
+            	<img src='$contextPath$images/photo.jpg' class='img-thumbnail' />
             </div>
         </div>
     </div>
