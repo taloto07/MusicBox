@@ -1,5 +1,9 @@
 package me.musicbox.hosting.rest;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -7,25 +11,20 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import me.musicbox.hosting.dao.User;
-import me.musicbox.hosting.guice.MainModule;
+import me.musicbox.hosting.guice.InjectorGuice;
 import me.musicbox.hosting.service.MusicService;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
 import com.sun.jersey.spi.resource.Singleton;
 
-
-
-@Singleton
+//@Singleton
 @Path("/v1/status")
 public class V1_status {
 	
-	Injector injector = Guice.createInjector(new MainModule());
 	MusicService service;
 	
 	
 	public V1_status(){
-		service = injector.getInstance(MusicService.class);
+		service = InjectorGuice.injector.getInstance(MusicService.class);
 	}
 
 	@GET
@@ -35,19 +34,43 @@ public class V1_status {
 	}
 	
 	@GET
-	@Path("{username}")
+	@Path("/getuser/{username}")
 	@Produces(MediaType.TEXT_HTML)
-	public String returnTitle(@PathParam("username") String username){
+	public String getUserByUsername(@PathParam("username") String username){
+		try {
+			username = URLDecoder.decode(username, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("khmer username: " + username);
 		User user = service.getUserByUsername(username);
 		String returnString = "<p>Demo of Jersey Restful Web Service with param and query from database: ";
 		if (user == null){
-			returnString += "Can't find user";
+			returnString += "Can't find user</p>";
 		}else{
-			returnString += user.getEmail();
+			returnString += "<p>User Name: " + user.getUsername() + "</p>";
+			returnString += "<p>First name: " + user.getFirstName() + "</p>";
+			returnString += "<p>Last name: " + user.getLastName() + "</p>";
+			returnString += "<p>Gender: " + user.getGender() + "</p>";
+			returnString += "<p>Date of birth: " + user.getDob() + "</p>";
+			returnString += "<p>Email: " + user.getEmail() + "</p>";
+		}		
+		
+		return returnString;
+	}
+	
+	@GET
+	@Path("/getusers")
+	@Produces(MediaType.TEXT_HTML)
+	public String getAllUsers(){
+		List<User> users = service.getAllUsers();
+		String output = "";
+		for (User user : users){
+			output += "<p>" + user.getUsername() + "</p>";
 		}
 		
-		returnString += "</p>";
-		return returnString;
+		return output;
 	}
 	
 }

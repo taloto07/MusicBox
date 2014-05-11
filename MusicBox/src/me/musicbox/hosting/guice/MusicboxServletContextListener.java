@@ -12,7 +12,9 @@ public class MusicboxServletContextListener extends GuiceServletContextListener 
 	@Override
 	protected Injector getInjector() {
 		
-		return Guice.createInjector(new MainModule());
+		InjectorGuice.injector = Guice.createInjector(new MainModule());
+		return InjectorGuice.injector;
+
 	}
 
 }

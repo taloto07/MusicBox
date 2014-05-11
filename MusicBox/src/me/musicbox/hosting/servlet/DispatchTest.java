@@ -17,31 +17,19 @@ import me.musicbox.hosting.dao.User;
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
 
-/**
- * Servlet implementation class DispatchTest
- */
 //@WebServlet("/DispatchTest")
 public class DispatchTest extends BaseServlet {
 	private static final long serialVersionUID = 1L;
-    
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+  
     public DispatchTest() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		requestProccess(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		requestProccess(request, response);
 	}
