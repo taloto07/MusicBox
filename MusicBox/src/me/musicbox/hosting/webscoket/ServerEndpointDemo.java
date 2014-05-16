@@ -23,7 +23,7 @@ import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 
-@ServerEndpoint("/serverendpointdemo/{page}")
+//@ServerEndpoint("/serverendpointdemo/{page}")
 public class ServerEndpointDemo {
 	static Set<Session> chatroomUsers = Collections.synchronizedSet(new HashSet<Session>());
 	

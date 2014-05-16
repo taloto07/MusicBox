@@ -18,18 +18,6 @@ home(contextPath) ::= "
 	            </div>
             </div>
 		</div>
-		
-		<br/>
-		
-		<div class='row'>
-			<div class='col-sm-12'>
-				This is mp3:
-            	<audio controls>
-  					<source src='$contextPath$mp3/ounpig.mp3' type='audio/mpeg'>
-					Your browser does not support the audio element.
-				</audio>
-            </div>
-        </div>
         
         <br />
 		

@@ -4,11 +4,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
@@ -31,6 +34,13 @@ public class DispatchServlet extends BaseServlet {
 	private void requestProccess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Get PrintWriter to write back to client
 		PrintWriter out = response.getWriter();
+		
+		// Session
+		HttpSession session = request.getSession();
+		session.setMaxInactiveInterval(2);
+		ServletContext servletContext = session.getServletContext();
+		AtomicInteger userCounter = (AtomicInteger) servletContext.getAttribute("userCounter");
+		int count = userCounter.get();
 		
 		// Map actual page's name to page's title
 		Map<String, String> pages = new HashMap<String, String>();
@@ -57,6 +67,7 @@ public class DispatchServlet extends BaseServlet {
 		page.add("contextPath", contextPath);
 		page.add("title", pages.get(myPage));
 		page.add("body", body.render());
+		page.add("onlineUsers", count);
 		
 		//Write back to client
 		out.print(page.render());

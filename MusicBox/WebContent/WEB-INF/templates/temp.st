@@ -1,4 +1,4 @@
-temp(contextPath, body, title)::="
+temp(contextPath, body, title, onlineUsers)::="
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,11 +28,13 @@ temp(contextPath, body, title)::="
    		</div><!--- /.container -->
   	</div> <!-- /.navbar -->
   	
+  	<div class='label label-danger'>$onlineUsers$ users online!</div>
+  	
   	$body$
   	
   	<div class='footer'>
 		<div class='container'>
-				Design with <span class='glyphicon glyphicon-heart'></span> in Seattle.
+				Design with <span class='glyphicon glyphicon-heart'></span> in Seattle. 
 		</div>
 	</div>
 </body>
