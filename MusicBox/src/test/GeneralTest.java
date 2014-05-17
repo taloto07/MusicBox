@@ -24,6 +24,7 @@ public class GeneralTest {
 		assertNotNull(seng7);
 		assertEquals(seng7.getUsername(), "7seng7");
 		assertEquals(seng7.getFirstName(), "senghuot");
+		
 	}
 
 }

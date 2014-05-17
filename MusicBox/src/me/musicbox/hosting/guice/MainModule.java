@@ -1,8 +1,8 @@
 package me.musicbox.hosting.guice;
 
-
-
 import me.musicbox.hosting.servlet.DispatchAjax;
+import me.musicbox.hosting.servlet.DispatchImage;
+import me.musicbox.hosting.servlet.DispatchMp3;
 import me.musicbox.hosting.servlet.DispatchRegister;
 import me.musicbox.hosting.servlet.DispatchServlet;
 import me.musicbox.hosting.servlet.DispatchTest;
@@ -28,6 +28,8 @@ public class MainModule extends ServletModule {
 		bind(SSE.class).in(Singleton.class);
 		bind(DispatchAjax.class).in(Singleton.class);
 		bind(DispatchRegister.class).in(Singleton.class);
+		bind(DispatchImage.class).in(Singleton.class);
+		bind(DispatchMp3.class).in(Singleton.class);
 		
 		serve("/").with(DispatchServlet.class);
 		serve("*.html").with(DispatchServlet.class);
@@ -41,5 +43,7 @@ public class MainModule extends ServletModule {
 		serve("/ajaxrequest").with(DispatchAjax.class);
 		serve("/register").with(DispatchRegister.class);
 		serve("/registerform").with(DispatchRegister.class);
+		serve("/image/*").with(DispatchImage.class);
+		serve("/mp3/*").with(DispatchMp3.class);
 	}
 }

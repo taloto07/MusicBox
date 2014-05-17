@@ -24,15 +24,21 @@ home(contextPath) ::= "
 		
 		<div class='row'>
 			<div class='col-sm-4'>
-            	<img src='$contextPath$images/photo.jpg' class='img-circle' />
+            	<img src='$contextPath$image/photo.jpg' class='img-circle' />
             </div>
             
             <div class='col-sm-4'>
-            	<img src='$contextPath$images/photo.jpg' class='img-rounded' />
+            	<img src='$contextPath$image/photo.jpg' class='img-rounded' />
             </div>
             
             <div class='col-sm-4'>
-            	<img src='$contextPath$images/photo.jpg' class='img-thumbnail' />
+            	<img src='$contextPath$image/photo.jpg' class='img-thumbnail' />
+            </div>
+            
+            <div class='row'>
+            	<div class='col-sm-4'>
+            		<embed height='50' width='100' src='$contextPath$mp3/ounpig.mp3'>
+            	</div>
             </div>
         </div>
     </div>
