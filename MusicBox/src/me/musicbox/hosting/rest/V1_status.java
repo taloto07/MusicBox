@@ -14,8 +14,6 @@ import me.musicbox.hosting.dao.User;
 import me.musicbox.hosting.guice.InjectorGuice;
 import me.musicbox.hosting.service.MusicService;
 
-import com.sun.jersey.spi.resource.Singleton;
-
 //@Singleton
 @Path("/v1/status")
 public class V1_status {

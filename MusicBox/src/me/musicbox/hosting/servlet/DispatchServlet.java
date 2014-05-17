@@ -36,11 +36,7 @@ public class DispatchServlet extends BaseServlet {
 		PrintWriter out = response.getWriter();
 		
 		// Session
-		HttpSession session = request.getSession();
-		session.setMaxInactiveInterval(2);
-		ServletContext servletContext = session.getServletContext();
-		AtomicInteger userCounter = (AtomicInteger) servletContext.getAttribute("userCounter");
-		int count = userCounter.get();
+		int count = getNumberUserOnline(request);
 		
 		// Map actual page's name to page's title
 		Map<String, String> pages = new HashMap<String, String>();

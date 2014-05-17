@@ -44,6 +44,9 @@ public class DispatchTest extends BaseServlet {
 		// Get contextPath for any external files such as css, js path
 		String contextPath = getContextPath(); 
 		
+		// Get number of online users
+		int count = getNumberUserOnline(request);
+		
 		//service.refresh();
 		
 		String url = request.getRequestURI();
@@ -88,8 +91,10 @@ public class DispatchTest extends BaseServlet {
 			
 			
 		}
+		
 		page.add("body", body.render());
 		page.add("contextPath", contextPath);
+		page.add("onlineUsers", count);
 		page.add("title", "test page");
 		
 		
