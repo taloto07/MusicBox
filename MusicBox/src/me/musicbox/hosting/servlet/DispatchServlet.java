@@ -33,6 +33,8 @@ public class DispatchServlet extends BaseServlet {
 		// Session
 		int count = getNumberUserOnline(request);
 		
+		System.out.println("Remote user: " + request.getRemoteUser());
+		
 		// Map actual page's name to page's title
 		Map<String, String> pages = new HashMap<String, String>();
 		pages.put("login", "Log In");

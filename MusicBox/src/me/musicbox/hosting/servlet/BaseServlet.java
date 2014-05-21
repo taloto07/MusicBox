@@ -57,7 +57,7 @@ public class BaseServlet extends HttpServlet {
 	// retrieve number of user currently online
 	protected int getNumberUserOnline(HttpServletRequest request){
 		HttpSession session = request.getSession();
-		session.setMaxInactiveInterval(2);
+		session.setMaxInactiveInterval(30);
 		ServletContext servletContext = session.getServletContext();
 		AtomicInteger userCounter = (AtomicInteger) servletContext.getAttribute("userCounter");
 		return userCounter.get();
