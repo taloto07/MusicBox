@@ -6,6 +6,8 @@ import me.musicbox.hosting.servlet.DispatchMp3;
 import me.musicbox.hosting.servlet.DispatchRegister;
 import me.musicbox.hosting.servlet.DispatchServlet;
 import me.musicbox.hosting.servlet.DispatchTest;
+import me.musicbox.hosting.servlet.LoginServlet;
+import me.musicbox.hosting.servlet.LogoutServlet;
 import me.musicbox.hosting.servlet.SSE;
 import me.musicbox.hosting.servlet.Testing;
 import me.musicbox.hosting.servlet.UploadServlet;
@@ -30,6 +32,8 @@ public class MainModule extends ServletModule {
 		bind(DispatchRegister.class).in(Singleton.class);
 		bind(DispatchImage.class).in(Singleton.class);
 		bind(DispatchMp3.class).in(Singleton.class);
+		bind(LogoutServlet.class).in(Singleton.class);
+		bind(LoginServlet.class).in(Singleton.class);
 		
 		serve("/").with(DispatchServlet.class);
 		serve("*.html").with(DispatchServlet.class);
@@ -45,5 +49,7 @@ public class MainModule extends ServletModule {
 		serve("/registerform").with(DispatchRegister.class);
 		serve("/image/*").with(DispatchImage.class);
 		serve("/mp3/*").with(DispatchMp3.class);
+		serve("/logout").with(LogoutServlet.class);
+		serve("/login").with(LoginServlet.class);
 	}
 }
