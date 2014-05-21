@@ -20,6 +20,7 @@ public class MusicService {
 		return entityManager.get().createNamedQuery("User.findAll", User.class).getResultList();
 	}
 	
+	//@Transactional
 	public User getUserByUsername(String username){
 		try{
 			return entityManager.get().createNamedQuery("User.findByUsername", User.class)

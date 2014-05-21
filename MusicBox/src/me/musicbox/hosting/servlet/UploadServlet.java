@@ -9,17 +9,13 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.stringtemplate.v4.ST;
-import org.stringtemplate.v4.STGroup;
 
 public class UploadServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
@@ -43,9 +39,7 @@ public class UploadServlet extends BaseServlet {
 		
 		// Get PrintWriter to write back to client
 		PrintWriter out = response.getWriter();
-		
-		// Get contextPath for any external files such as css, js path
-		String contextPath = getContextPath(); 
+		 
 		
 		// gets absolute path of the web application
 		String applicationPath = this.getServletContext().getRealPath("");

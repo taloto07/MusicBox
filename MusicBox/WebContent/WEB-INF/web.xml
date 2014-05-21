@@ -17,7 +17,7 @@
   	<url-pattern>/api/*</url-pattern>
   </servlet-mapping>
   
-  <listener>
+   <listener>
     <listener-class>me.musicbox.hosting.guice.MusicboxServletContextListener</listener-class>
   </listener>
   
@@ -28,5 +28,14 @@
   <filter-mapping>
     <filter-name>guiceFilter</filter-name>
     <url-pattern>/*</url-pattern>
+    <dispatcher>ERROR</dispatcher>
+    <dispatcher>REQUEST</dispatcher>
   </filter-mapping>
+  
+  <error-page>
+    <error-code>404</error-code>
+    <location>/page404.html</location>
+</error-page>
+  
+
 </web-app>

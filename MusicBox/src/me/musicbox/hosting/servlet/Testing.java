@@ -1,24 +1,10 @@
 package me.musicbox.hosting.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
-
-import javax.jws.WebService;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import me.musicbox.hosting.dao.Follow;
 import me.musicbox.hosting.dao.User;
-
-import org.stringtemplate.v4.ST;
-import org.stringtemplate.v4.STGroup;
-
-/**
- * Servlet implementation class DispatchTest
- */
 //@WebServlet("/DispatchTest")
 //@WebService
 public class Testing extends BaseServlet {

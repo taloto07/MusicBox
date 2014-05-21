@@ -1,7 +1,7 @@
 page404(contextPath)::="
 <div class='simplicity'>
 	<div class='container'>
-		<h1>error</h1>
+		<h1 style=\"color:red\">Page Not Found.</h1>
 	</div>
 </div>
 ";

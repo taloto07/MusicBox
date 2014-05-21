@@ -3,18 +3,10 @@ package me.musicbox.hosting.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import me.musicbox.hosting.dao.Follow;
-import me.musicbox.hosting.dao.User;
-
-import org.stringtemplate.v4.ST;
-import org.stringtemplate.v4.STGroup;
 
 //@WebServlet("/DispatchTest")
 public class SSE extends BaseServlet {
@@ -32,6 +24,7 @@ public class SSE extends BaseServlet {
 		requestProccess(request, response);
 	}
 	
+	@SuppressWarnings({ "deprecation", "static-access" })
 	private void requestProccess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Set unicode to utf-8
 		response.setCharacterEncoding("UTF-8");
@@ -40,10 +33,7 @@ public class SSE extends BaseServlet {
 		response.setHeader("Connection", "keep-alive");
 		
 		// Get PrintWriter to write back to client
-		PrintWriter out = response.getWriter();
-		
-		// Get contextPath for any external files such as css, js path
-		String contextPath = getContextPath(); 
+		PrintWriter out = response.getWriter(); 
 		
 		while(true){
 			out.print("id: " + "ServerTime" + "\n");
