@@ -43,8 +43,8 @@
 	
 	<error-page>
 		<error-code>403</error-code>
-		<location>/page404.html</location>
-	</error-page>
+		<location>/page403.html</location>
+	 </error-page>
 
 	<login-config>
     <auth-method>FORM</auth-method>
@@ -58,8 +58,9 @@
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>All Resources</web-resource-name>
-      <url-pattern>*.php</url-pattern>
+      <url-pattern>/test/*</url-pattern>
       <url-pattern>*.asp</url-pattern>
+      <url-pattern>/api/*</url-pattern>
     </web-resource-collection>
     <auth-constraint>
       <role-name>role_admin</role-name>

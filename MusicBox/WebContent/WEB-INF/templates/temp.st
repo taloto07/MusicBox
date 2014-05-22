@@ -1,4 +1,4 @@
-temp(contextPath, body, title, onlineUsers)::="
+temp(contextPath, body, title, onlineUsers, loginOrOut, loginOrOutLabel, username)::="
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,8 +21,8 @@ temp(contextPath, body, title, onlineUsers)::="
      			<form class='navbar-form navbar-left' role='search'>
 			          <input type='text' class='form-control' id='search' placeholder='Search'>
 	        	</form>
-		        <a class='navbar-brand navbar-right' href='$contextPath$login' id='login'>
-		        	<span class='glyphicon glyphicon glyphicon-user'></span> Log In
+		        <a class='navbar-brand navbar-right' href='$contextPath$$loginOrOut$' id='login'>
+		        	<span class='glyphicon glyphicon glyphicon-user'></span> $username$ $loginOrOutLabel$
 		        </a>
 			</div>
    		</div><!--- /.container -->

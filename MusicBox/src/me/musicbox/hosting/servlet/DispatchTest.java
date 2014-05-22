@@ -90,6 +90,18 @@ public class DispatchTest extends BaseServlet {
 			
 		}
 		
+		String login = "login";
+		String loginLabel = "Log In";
+		String username = request.getRemoteUser();
+		if (username != null){
+			login = "logout";
+			loginLabel = "Log Out";
+		}
+		
+		page.add("loginOrOut", login);
+		page.add("loginOrOutLabel", loginLabel);
+		page.add("username", username);
+		
 		page.add("body", body.render());
 		page.add("contextPath", contextPath);
 		page.add("onlineUsers", count);

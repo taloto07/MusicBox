@@ -49,8 +49,21 @@ public class DispatchRegister extends BaseServlet {
 		// retrieve number of current user online
 		int count = getNumberUserOnline(request);
 		
+		
 		STGroup templates = getSTGroup();
 		ST page = templates.getInstanceOf("temp");
+		
+		String login = "login";
+		String loginLabel = "Log In";
+		String username = request.getRemoteUser();
+		if (username != null){
+			login = "logout";
+			loginLabel = "Log Out";
+		}
+		
+		page.add("loginOrOut", login);
+		page.add("loginOrOutLabel", loginLabel);
+		page.add("username", username);
 		page.add("contextPath", contextPath);
 		page.add("title", "Register");
 		page.add("onlineUsers", count);

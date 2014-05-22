@@ -45,6 +45,7 @@ public class DispatchServlet extends BaseServlet {
 		pages.put("socketclient", "Socket Demo");
 		pages.put("sse", "SSE Demo");
 		pages.put("ajax", "AJAX Demo");
+		pages.put("page403", "403");
 		
 		String URI = request.getRequestURI();
 		String myPage = getPageName(URI, pages);
@@ -55,6 +56,18 @@ public class DispatchServlet extends BaseServlet {
 		STGroup templates = getSTGroup();
 		ST page = templates.getInstanceOf("temp");
 		ST body = templates.getInstanceOf(myPage);
+		
+		String login = "login";
+		String loginLabel = "Log In";
+		String username = request.getRemoteUser();
+		if (username != null){
+			login = "logout";
+			loginLabel = "Log Out";
+		}
+		
+		page.add("loginOrOut", login);
+		page.add("loginOrOutLabel", loginLabel);
+		page.add("username", username);
 		
 		body.add("contextPath", contextPath);
 		page.add("contextPath", contextPath);

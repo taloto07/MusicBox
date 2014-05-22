@@ -69,13 +69,14 @@ public class DispatchImage extends BaseServlet {
 				}
 			}
 		}else{
-			response.setContentType("text/html");
-			
-			// Get PrintWriter to write back to client
-			PrintWriter out = response.getWriter();
-			
-			out.println("Path is not found!");
-			out.flush();
+			response.sendRedirect("page404.html");
+//			response.setContentType("text/html");
+//			
+//			// Get PrintWriter to write back to client
+//			PrintWriter out = response.getWriter();
+//			
+//			out.println("Path is not found!");
+//			out.flush();
 		}
 	}
 
